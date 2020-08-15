@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api</title>
+</head>
+<body>
+    <h1 id="activities">Have a look your task </h1>
+    <h2>learn from : <a id="link" href="#">changes activities</a></h2>
+
+    <script>
+        function getTask(){
+            fetch("http://www.boredapi.com/api/activity/")
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("activities").innerText = data.activity;
+            document.getElementById("link").innerText = data.type;
+            
+            });
+            
+        }
+       setInterval(() => {
+        getTask();
+       }, 2000);
+    </script>
+</body>
+</html>
